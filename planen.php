@@ -16,25 +16,6 @@
 
     </head>
 
-    <?php
-        // echo "Den nya planlösningen";
-
-        // $files = glob("uploadedImages/*.*");
-        // for ($i=0; $i<count($files); $i++) {
-
-        //     $num = $files[$i];
-        //     echo '<img src="'.$num.' "  id="allImages" " />'."<br/><br/>";
-        // }
-
-        // $images = glob("uploadedImages/*.*");
-
-        // // Echo ut namnen på de upladdade bilderna.
-        // foreach($images as $image) {
-
-        //     echo basename($image) , "<br>" ;
-        // }
-    ?>
-
     <body>
         <ul id="menutwo" title"">
             <li class="ui-state-disabled"><a href="#">Örestad Linux</a></li>
@@ -46,15 +27,39 @@
                 <ul>
                     <div id="backgroundpicker">
                         <select id="backgrounds">
-                            <option value="1">Plan 1</option>
-                            <option value="2">Plan 2</option>
-                            <option value="3">Plan 3</option>
+                            <option value="1">Entreplan</option>
+                            <option value="2">Förrådsbyggnad A</option>
+                            <option value="3">Förråd C</option>
                         </select>
                     </div>
                 </ul>
             </li>
 
             <div id="ladda-upp-plan-txt"><a href="upload_file.php">Ladda upp Plan</a></div>
+
+            <li>
+                <a href="#">Upladdade Plan</a>
+                <ul>
+                    <?php
+                        $images = glob("uploadedImages/*.*");
+
+                        // Echo ut namnen på de upladdade bilderna.
+                        foreach($images as $image) {
+
+                            echo basename($image) , "<br>";
+                        }
+
+                        // Echo ut de upladdade bilderna.
+                        $files = glob("uploadedImages/*.*");
+
+                        for ($i=0; $i<count($files); $i++) {
+
+                            $num = $files[$i];
+                            echo '<img src="'.$num.' "  id="allImages" " />'."<li><br/><br/></li>";
+                        }
+                    ?>
+                </ul>
+            </li>
 
             <div><a href="javascript:window.print()">Printa Plan</a></div>
 
@@ -67,12 +72,10 @@
 
                 <div id="container" class="container"></div>
 
-               <!--  class="zoomTarget" data-targetsize="1.2" -->
+                <!--  class="zoomTarget" data-targetsize="1.2" -->
 
                 <!-- <a href="#" id="target">rum 1</a>
                 <div id="dialog"><img src="http://static.adzerk.net/Advertisers/d003fae081674b67aa74e6d19e289d40.png"/></div> -->
-
-                <!-- <div id="testar"></div> -->
 
             </div>
         </div>
@@ -117,6 +120,20 @@
                 </ul>
             </li>
 
+   <!--          <li>
+                <a href="#">Types</a>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <a href="#"><span id="currentType" title=""></span></a>
+                        </li>
+                        <li>
+                            <ul id="changeToTypes"></ul>
+                        </li>
+                    </ul>
+            </li> -->
+
             <hr>
 
             <li class="ui-state-disabled">
@@ -143,35 +160,6 @@
                     </li>
                 </ul>
             </li>
-
-            <!-- <li>
-            <div id="buttons">
-                <a href="#"><input type="button" id="start" value="Start"></a>
-                <a href="#"><input type="button" id="stop" value="Stop"></a>
-            </div>
-            </li> -->
-
-
-           <!--  <li class="ui-state-disabled"><a href="#">Visa temperatur vid objektet:</a><div id="" title=""></div></li>
-            <li><input type="submit" value="Temperatur"></li> -->
-
-            <!-- <li class="ui-state-disabled">
-                <li class="ui-state-disabled"><a href="#">Visa temperatur vid objektet:</a></li>
-                <div id="temp-btn">
-                    <input type="button" value="Temperatur" id="temperatur-btn">
-                    <li><a href="#"></a><li>
-                </div>
-            </li> -->
-
-        <!--     <li>
-                <li class="ui-state-disabled"><a href="#">Visa temperatur vid objektet:</a></li>
-                <div id="tempeperatur-btn">
-                    <input type="button" value="Temperatur">
-                </div>
-            </li> -->
-
-            <!--    <div id="logout-link"><a href="login-system/logout.php">Logga ut</a></div> -->
-
         </ul>
     </body>
 </html>

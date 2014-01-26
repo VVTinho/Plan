@@ -7,6 +7,7 @@ var layer = new Kinetic.Layer();
 var currentPlan = 1;
 var availableTypes = [];
 var availableIntervals = [];
+var availableNames = [];
 var kinGroups = [];
 
 window.onload = function() {
@@ -59,9 +60,9 @@ function populateNames() {
 
     for(i = 0; i < jsonObjects.length; i++) {
 
-        if(availableIntervals.indexOf(jsonObjects[i].name) < 0) {
+        if(availableNames.indexOf(jsonObjects[i].name) < 0) {
 
-            availableIntervals.push(jsonObjects[i].name);
+            availableNames.push(jsonObjects[i].name);
             $("#chan").append('<li><a href="#">' + jsonObjects[i].name + '</a></li>');
         }
     }
@@ -217,11 +218,11 @@ function setupKinetic(index, theImage) {
 				$( "#currentinterval" ).html("Aktuell Interval: " + jsonObjects[i].interval);
 				$("#temperature").html(jsonObjects[i].value);
 
+                $("#zoom").html('<div id="zoom-text-title">Zoom:</div><span class="ui-icon ui-icon-zoomin" onclick="zoomfunction(); return false;"></span> <span class="ui-icon ui-icon-zoomout" onclick="zoomfunction(); return false;"></span>');
+
 	        	if(jsonObjects[i].active == true) {
 
 	          		$("#activeToggle").html('<li><a href="#" onclick="toggleActive(jsonObjects[i], false)">Av</a></li>');
-
-	            	// $("#zoom").append('<hr><div id="zoom-text-title">Zoom:</div><span class="ui-icon ui-icon-zoomin" onclick="zoomfunction(); return false;"></span> <span class="ui-icon ui-icon-zoomout" onclick="zoomfunction(); return false;"></span>');
 
                     sensorOFF();
 	        	}
@@ -230,8 +231,6 @@ function setupKinetic(index, theImage) {
 					$("#activeToggle").html('<li><a href="#" onclick="toggleActive(jsonObjects[i], true)">På</a></li>');
 
                     sensorON();
-
-	            	// $("#zoom").hide();
 				}
 				break;
 			}

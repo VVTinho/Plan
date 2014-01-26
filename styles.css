@@ -255,9 +255,7 @@ canvas {
 #zoom-text-title {
     font-size: 13px;
     left: 6px;
-    padding: 1px;
     position: relative;
-    top: 10px;
 }
 
 /* Zoom */
@@ -287,3 +285,16 @@ canvas {
 #oks {
 
 }
+
+/* Images */
+
+#newimages {
+
+}
+
+#allImages {
+    height: auto;
+    padding: 2px;
+    width: 100%;
+}
+
