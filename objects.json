@@ -1,0 +1,6 @@
+{
+  "1": {"x": 475, "y": 269, "type":"C", "name":"frys", "value":-21},
+  "2": {"x": 502, "y": 302, "type":"C", "name":"kyl", "value":4},
+  "3": {"x": 300, "y": 600, "type":"C", "name":"inkubator", "value":37.2},
+  "4": {"x": 123, "y": 815, "type":"C", "name":"kylrum", "value":2} 
+}

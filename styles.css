@@ -1,0 +1,289 @@
+body {
+    margin: 0px;
+
+    /*background: url('plan1.jpg') no-repeat;*/
+    height: 800px;
+    width:100%;
+    font-size: 12px;
+}
+
+#bilderna {
+    position: absolute;
+    overflow: scroll;
+}
+
+canvas {
+
+}
+
+#testar {
+
+}
+
+#container {
+    overflow: scroll;
+}
+
+#target {
+    bottom: 140px !important;
+    left: 700px;
+}
+
+.maskin-values {
+    float: left;
+    padding: 10px;
+}
+
+.maskin-values-two {
+     margin-left: 10%;
+     padding: 10px;
+}
+
+.save-btn {
+    float: right;
+}
+
+#target {
+    position: absolute;
+    bottom: 0px;
+}
+
+.grader {
+    text-align: center;
+}
+
+.ui-button {
+    background: #FF0000;
+    text-align: center;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    background: -webkit-gradient(linear, bottom, left 175px, from(#D80000), to(#E00000));
+    background: -moz-linear-gradient(bottom, #D80000, #E00000 175px);
+}
+
+#objects {
+    width: 100%;
+}
+
+#backgrounds {
+     width: 100%;
+}
+
+#category {
+    width: 100%;
+}
+
+#bekrafta {
+    width: 100%;
+    background: -webkit-gradient(linear, bottom, left 175px, from(#00CC00), to(#00CC33));
+    background: -moz-linear-gradient(bottom, #00CC00, #00CC33 175px);
+    border: inset 1px solid #000000;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#bekraftainfo {
+    width: 100%;
+    background: -webkit-gradient(linear, bottom, left 175px, from(#00CC00), to(#00CC33));
+    background: -moz-linear-gradient(bottom, #00CC00, #00CC33 175px);
+    border: inset 1px solid #000000;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#items {
+    width: 100%;
+    background: -webkit-gradient(linear, bottom, left 175px, from(#f1f1f1), to(#f9f9f9));
+    background: -moz-linear-gradient(bottom, #f1f1f1, #f9f9f9 175px);
+    border: inset 1px solid #000000;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#typer {
+    width: 100%;
+    background: -webkit-gradient(linear, bottom, left 175px, from(#f1f1f1), to(#f9f9f9));
+    background: -moz-linear-gradient(bottom, #f1f1f1, #f9f9f9 175px);
+    border: inset 1px solid #000000;
+    border-radius: 6px 6px 6px 6px;
+}
+
+.red {
+    color: red;
+    background-color: red;
+    padding: 40px;
+}
+
+/* Meny */
+
+#menu {
+    left: 72%;
+    position: absolute;
+    top: 4%;
+}
+
+.ui-menu .ui-menu-divider {
+    margin: 4px -2px !important;
+}
+
+.ui-dialog-title {
+    position: relative;
+    top: 80px;
+}
+
+.ui-menu {
+    width: 140px;
+}
+
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+    background-image: none;
+    opacity: 1 !important;
+    font-family: helvetica !important;
+    text-align: center !important;
+}
+
+#objektnamn {
+    bottom: 20px;
+    position: relative;
+    right: 3px;
+    text-align: right;
+}
+
+#objektvalue {
+     	text-align: center;
+}
+
+#ui-id-5 {
+}
+
+#ui-id-1 {
+    margin-top: -20px;
+    position: relative;
+    text-align: left;
+    top: 20px;
+}
+
+#temperature {
+	font-size: 20px;
+}
+
+#grader {
+	text-align: center;
+}
+
+#ui-id-12 {
+}
+
+#temperatur-btn {
+    font-size: 10px;
+}
+
+#temp-btn {
+    text-align: center;
+}
+
+.ui-widget {
+    font-family: helvetica !important;
+}
+
+/* Loginpage */
+
+#head_title {
+    font-size: 66px;
+    padding-top: 28px;
+    text-align: center;
+}
+
+#text_under_head_title {
+    text-align: center;
+    font-size: 20px;
+}
+
+#date {
+    text-align: center;
+}
+
+#form1 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 172px;
+}
+
+#registration {
+    text-align: center;
+}
+
+#dotted-line {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+#anv {
+    margin-bottom: 20px;
+}
+
+#los {
+    margin-bottom: 20px;
+}
+
+/* Meny Two */
+
+#menutwo {
+    position: absolute;
+    width: 100px;
+    z-index: 1;
+}
+
+/* Zoom icons */
+
+.ui-icon-zoomin {
+    float: left;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.ui-icon-zoomout {
+    border: 1px solid #000000;
+    border-radius: 10px;
+    left: -6px !important;
+}
+
+.ui-menu .ui-icon {
+    float: right;
+    position: relative !important;
+}
+
+#zoom-text-title {
+    font-size: 13px;
+    left: 6px;
+    padding: 1px;
+    position: relative;
+    top: 10px;
+}
+
+/* Zoom */
+
+.zoomTarget {
+    overflow: scroll !important;
+}
+
+.zoomContainer {
+    height: 1200px;
+    width: 1400px;
+    overflow: scroll !important;
+}
+
+.noScroll {
+    overflow: scroll !important;
+}
+
+.zoomViewport {
+
+}
+
+.kineticjs-content {
+
+}
+
+#oks {
+
+}
