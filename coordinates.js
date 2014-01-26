@@ -9,6 +9,7 @@ var availableTypes = [];
 var availableIntervals = [];
 var availableNames = [];
 var kinGroups = [];
+var currentObject = {};
 
 window.onload = function() {
 
@@ -34,26 +35,43 @@ function loadObjectsFromExt() {
 
 function populateTypes() {
 
-	for(i = 0; i < jsonObjects.length; i++) {
+    for(i = 0; i < jsonObjects.length; i++) {
 
-		if(availableTypes.indexOf(jsonObjects[i].type) < 0) {
+        if(availableTypes.indexOf(jsonObjects[i].type) < 0) {
 
-			availableTypes.push(jsonObjects[i].type);
-			$("#changetotypes").append('<li><a href="#">' + jsonObjects[i].type + '</a></li>');
-		}
-	}
+            availableTypes.push(jsonObjects[i].type);
+            $("#changetotypes").append('<li><a href="#" onclick="changeType(\'' + jsonObjects[i].type + '\')">' + jsonObjects[i].type + '</a></li>');
+        }
+    }
+}
+
+function changeType(type) {
+
+    console.log("currentobject först: " + currentObject.type);
+    currentObject.type = type;
+    console.log("currentobject sen: " + currentObject.type);
+    $( "#currenttype" ).html("Aktuell Typ: " + currentObject.type);
+    // du kan ju kommentera ut console.log() om du inte vill se det hela tiden.
 }
 
 function populateIntervals() {
 
-	for(i = 0; i < jsonObjects.length; i++) {
+    for(i = 0; i < jsonObjects.length; i++) {
 
-		if(availableIntervals.indexOf(jsonObjects[i].interval) < 0) {
+        if(availableIntervals.indexOf(jsonObjects[i].interval) < 0) {
 
-			availableIntervals.push(jsonObjects[i].interval);
-			$("#changetointerval").append('<li><a href="#">' + jsonObjects[i].interval + '</a></li>');
-		}
-	}
+            availableIntervals.push(jsonObjects[i].interval);
+            $("#changetointerval").append('<li><a href="#" onclick="changeInterval(' + jsonObjects[i].interval + ')">' + jsonObjects[i].interval + '</a></li>');
+        }
+    }
+}
+
+function changeInterval(interval) {
+
+    console.log("currentobject först: " + currentObject.interval);
+    currentObject.interval = interval;
+    console.log("currentobject sen: " + currentObject.interval);
+    $( "#currentinterval" ).html("Aktuell Interval: " + currentObject.interval);
 }
 
 function populateNames() {
@@ -169,17 +187,19 @@ function setupKinetic(index, theImage) {
 		layer.draw();
 	}
 
-	kinGroups[index].on('click', function() {
+    kinGroups[index].on('click', function() {
 
-		console.log("click");
+        console.log("click");
 
-	  	for(i=0; i<jsonObjects.length; i++) {
+          for(i=0; i<jsonObjects.length; i++) {
 
-			if(kinGroups[index].getName() == jsonObjects[i].name) {
+            if(kinGroups[index].getName() == jsonObjects[i].name) {
 
-				console.log("names är samma, radius: ", jsonObjects[i].radie);
+                console.log("names är samma, radius: ", jsonObjects[i].radie);
+                currentObject = jsonObjects[i];
+                console.log("currentobj: " + currentObject.name);
 
-	        	if(jsonObjects[i].radie == false) {
+                if(jsonObjects[i].radie == false) {
 
                     console.log("add en ny cirkel");
 
@@ -195,46 +215,41 @@ function setupKinetic(index, theImage) {
                     }
 
                     kinGroups[index].add(circle);
-	    			kinGroups[index].add(text);
-					jsonObjects[i].radie = true;
+                    kinGroups[index].add(text);
+                    jsonObjects[i].radie = true;
                     // animate();
-				}
-				break;
-			}
-		}
+                }
 
-		for(i=0; i<jsonObjects.length; i++) {
+                writeMessage(jsonObjects[i].value);
 
-			if(kinGroups[index].getName() == jsonObjects[i].name) {
+                var hamtaNamn = kinGroups[index].getName();
+                $( "#objektnamn" ).html(hamtaNamn);
+                $( "#flyttaobjektnamn" ).html(hamtaNamn);
 
-                console.log("item info");
-	    		writeMessage(jsonObjects[i].value);
+                $( "#currenttype" ).html("Aktuell Typ: " + jsonObjects[i].type);
+                $( "#currentinterval" ).html("Aktuell Interval: " + jsonObjects[i].interval);
+                $("#temperature").html(jsonObjects[i].value);
 
-				var hamtaNamn = kinGroups[index].getName();
-	    		$( "#objektnamn" ).html(hamtaNamn);
-				$( "#flyttaobjektnamn" ).html(hamtaNamn);
+                if(jsonObjects[i].active == true) {
 
-	        	$( "#currenttype" ).html("Aktuell Typ: " + jsonObjects[i].type);
-				$( "#currentinterval" ).html("Aktuell Interval: " + jsonObjects[i].interval);
-				$("#temperature").html(jsonObjects[i].value);
+                      $("#activeToggle").html('<li><a href="#" onclick="toggleActive(jsonObjects[i], false)">Av</a></li>');
 
-                $("#zoom").html('<div id="zoom-text-title">Zoom:</div><span class="ui-icon ui-icon-zoomin" onclick="zoomfunction(); return false;"></span> <span class="ui-icon ui-icon-zoomout" onclick="zoomfunction(); return false;"></span>');
-
-	        	if(jsonObjects[i].active == true) {
-
-	          		$("#activeToggle").html('<li><a href="#" onclick="toggleActive(jsonObjects[i], false)">Av</a></li>');
+                    // $("#zoom").append('<hr><div id="zoom-text-title">Zoom:</div><span class="ui-icon ui-icon-zoomin" onclick="zoomfunction(); return false;"></span> <span class="ui-icon ui-icon-zoomout" onclick="zoomfunction(); return false;"></span>');
 
                     sensorOFF();
-	        	}
-				else {
+                }
+                else {
 
-					$("#activeToggle").html('<li><a href="#" onclick="toggleActive(jsonObjects[i], true)">På</a></li>');
+                    $("#activeToggle").html('<li><a href="#" onclick="toggleActive(jsonObjects[i], true)">På</a></li>');
 
                     sensorON();
-				}
-				break;
-			}
-		}
+
+                    // $("#zoom").hide();
+                }
+
+                break;
+            }
+        }
         deleteSensor();
     });
 
