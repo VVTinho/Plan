@@ -168,12 +168,24 @@ function setupKinetic(index, theImage) {
 	   	y: kinImages[index].getY(),
         width: kinImages[index].getWidth(),
         height: kinImages[index].getHeight(),
-	   	radius: 50,
-	    fill: 'red',
+	   	radius: 55,
+	    fill: 'green',
 	    stroke: 'yellow',
-	    opacity: 0.3,
-	    strokeWidth: 1
+	    opacity: 0.2,
+	    strokeWidth: 20
 	});
+
+    var circlered = new Kinetic.Circle({
+
+        x: kinImages[index].getX(),
+        y: kinImages[index].getY(),
+        width: kinImages[index].getWidth(),
+        height: kinImages[index].getHeight(),
+        radius: 80,
+        stroke: 'red',
+        opacity: 0.2,
+        strokeWidth: 30
+    });
 
 	kinGroups[index].add(kinImages[index]);
 
@@ -191,15 +203,15 @@ function setupKinetic(index, theImage) {
 
         console.log("click");
 
-          for(i=0; i<jsonObjects.length; i++) {
+        for(i=0; i<jsonObjects.length; i++) {
 
             if(kinGroups[index].getName() == jsonObjects[i].name) {
 
                 console.log("names är samma, radius: ", jsonObjects[i].radie);
-                currentObject = jsonObjects[i];
+                //currentObject = jsonObjects[i];
                 console.log("currentobj: " + currentObject.name);
 
-                if(jsonObjects[i].radie == false) {
+                //if(jsonObjects[i].radie == false) {
 
                     console.log("add en ny cirkel");
 
@@ -214,11 +226,10 @@ function setupKinetic(index, theImage) {
                         text.getLayer().draw();
                     }
 
-                    kinGroups[index].add(circle);
                     kinGroups[index].add(text);
-                    jsonObjects[i].radie = true;
+                    //jsonObjects[i].radie = true;
                     // animate();
-                }
+                //}
 
                 writeMessage(jsonObjects[i].value);
 
@@ -232,9 +243,9 @@ function setupKinetic(index, theImage) {
 
                 if(jsonObjects[i].active == true) {
 
-                      $("#activeToggle").html('<li><a href="#" onclick="toggleActive(jsonObjects[i], false)">Av</a></li>');
+                    $("#activeToggle").html('<li><a href="#" onclick="toggleActive(jsonObjects[i], false)">Av</a></li>');
 
-                    // $("#zoom").append('<hr><div id="zoom-text-title">Zoom:</div><span class="ui-icon ui-icon-zoomin" onclick="zoomfunction(); return false;"></span> <span class="ui-icon ui-icon-zoomout" onclick="zoomfunction(); return false;"></span>');
+                    $("#zoom").append('<div id="zoom-text-title">Zoom:</div><span class="ui-icon ui-icon-zoomin" onclick="zoomfunction(); return false;"></span> <span class="ui-icon ui-icon-zoomout" onclick="zoomfunction(); return false;"></span>');
 
                     sensorOFF();
                 }
@@ -244,9 +255,8 @@ function setupKinetic(index, theImage) {
 
                     sensorON();
 
-                    // $("#zoom").hide();
+                    $("#zoom").hide();
                 }
-
                 break;
             }
         }
@@ -360,6 +370,136 @@ function setupKinetic(index, theImage) {
         layer.draw();
     }
 
+    function alarmOFF() {
+
+        var alarmcircle = new Kinetic.Circle({
+
+            x: kinImages[index].getX(),
+            y: kinImages[index].getY(),
+            width: kinImages[index].getWidth(),
+            height: kinImages[index].getHeight(),
+            radius: 18,
+            fill: 'green',
+            stroke: 'black',
+            opacity: 1,
+            strokeWidth: 1
+        });
+
+        kinGroups[index].add(alarmcircle);
+
+        layer.draw();
+    }
+
+    function alarmON() {
+
+        var alarmcircle = new Kinetic.Circle({
+
+            x: kinImages[index].getX(),
+            y: kinImages[index].getY(),
+            width: kinImages[index].getWidth(),
+            height: kinImages[index].getHeight(),
+            radius: 18,
+            fill: 'red',
+            stroke: 'black',
+            opacity: 1,
+            strokeWidth: 1
+        });
+
+        kinGroups[index].add(alarmcircle);
+
+        layer.draw();
+    }
+
+    showAlarm();
+
+    function showAlarm() {
+
+        for(i=0; i<jsonObjects.length; i++) {
+
+            if(kinGroups[index].getName() == jsonObjects[i].name) {
+
+                if(jsonObjects[i].alarm == true) {
+
+                    $("#alarmToggle").html('<li><a href="#" onclick="toggleAlarm(jsonObjects[i], false)">Av</a></li>');
+
+                        alarmOFF();
+                    }
+                    else {
+
+                        $("#alarmToggle").html('<li><a href="#" onclick="toggleAlarm(jsonObjects[i], true)">På</a></li>');
+
+                        alarmON();
+                    }
+            }
+        }
+    }
+
+    var textradie = new Kinetic.Text({
+
+        x: 1050,
+        y: 380,
+        fontFamily: 'Calibri',
+        fontSize: 18,
+        text: 'Visa sensor radie',
+        fill: 'black'
+    });
+
+    kinGroups[index].add(textradie);
+
+    //layer.draw();
+
+    textradie.on('click', function() {
+
+        for(i=0; i<jsonObjects.length; i++) {
+            console.log("testar å testar");
+
+            if(kinGroups[index].getName() == jsonObjects[i].name) {
+
+        //         // console.log("names är samma, radius: ", jsonObjects[i].radie);
+                   // currentObject = jsonObjects[i];
+        //         // console.log("currentobj: " + currentObject.name);
+
+                   if(jsonObjects[i].radie == false) {
+
+        //             console.log("add en ny cirkel");
+
+                    // setInterval(function () {
+
+                    //     onUpdateTextTemperature()
+                    // }, 8000);
+
+                    // function onUpdateTextTemperature() {
+
+                    //     text.setText("");
+                    //     text.getLayer().draw();
+                    // }
+
+                    // kinGroups[index].add(text);
+                    // jsonObjects[i].radie = true;
+
+                    // alert("Visa radie");
+
+                        kinGroups[index].add(circle);
+                        kinGroups[index].add(circlered);
+                    // jsonObjects[i].radie = true;
+                    }
+        //         // else {
+
+        //         //     kinGroups[index].add(circle);
+        //         //     kinGroups[index].add(circlered);
+        //         //     //jsonObjects[i].radie = true;
+        //         // }
+        //         // if(jsonObjects[i].radie == true) {
+
+        //         //     kinGroups[index].add(circle);
+        //         //     kinGroups[index].add(circlered);
+        //         //     //jsonObjects[i].radie = false;
+        //         // }
+        //         break;
+            }
+        }
+    });
+
     // var angularSpeed = 360 / 4;
 
     // var anim = new Kinetic.Animation(function(frame) {
@@ -471,6 +611,22 @@ function toggleActive(clickedObject, active) {
 
 		$("#activeToggle").html('<li><a href="#" onclick="toggleActive(clickedObject, true)">På</a></li>');
 	}
+}
+
+function toggleAlarm(clickedObject, alarm) {
+
+    console.log("alarm: " + alarm + " clickedobj " + jsonObjects[i].alarm + " " + clickedObject.alarm + " orgobj alarm:" + jsonObjects[i].alarm);
+    clickedObject.alarm = alarm;
+    console.log("jsonalarm:" + jsonObjects[i].alarm + " , clickedalarm" + clickedObject.alarm);
+
+    if(clickedObject.active == true) {
+
+        $("#activeToggle").html('<li><a href="#" onclick="toggleAlarm(clickedObject, false)">Av</a></li>');
+    }
+    else {
+
+        $("#activeToggle").html('<li><a href="#" onclick="toggleAlarm(clickedObject, true)">På</a></li>');
+    }
 }
 
 $(document).ready(function() {
