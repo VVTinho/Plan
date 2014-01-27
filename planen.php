@@ -17,54 +17,6 @@
     </head>
 
     <body>
-        <ul id="menutwo" title"">
-            <li class="ui-state-disabled"><a href="#">Örestad Linux</a></li>
-
-            <hr>
-
-            <li>
-                <a href="#">Visa Plan</a>
-                <ul>
-                    <div id="backgroundpicker">
-                        <select id="backgrounds">
-                            <option value="1">Entreplan</option>
-                            <option value="2">Förrådsbyggnad A</option>
-                            <option value="3">Förråd C</option>
-                        </select>
-                    </div>
-                </ul>
-            </li>
-
-            <div id="ladda-upp-plan-txt"><a href="upload_file.php">Ladda upp Plan</a></div>
-
-            <li>
-                <a href="#">Upladdade Plan</a>
-                <ul>
-                    <?php
-                        $images = glob("uploadedImages/*.*");
-
-                        // Echo ut namnen på de upladdade bilderna.
-                        foreach($images as $image) {
-
-                            echo basename($image) , "<br>";
-                        }
-
-                        // Echo ut de upladdade bilderna.
-                        $files = glob("uploadedImages/*.*");
-
-                        for ($i=0; $i<count($files); $i++) {
-
-                            $num = $files[$i];
-                            echo '<img src="'.$num.' "  id="allImages" " />'."<li><br/><br/></li>";
-                        }
-                    ?>
-                </ul>
-            </li>
-
-            <div><a href="javascript:window.print()">Printa Plan</a></div>
-
-            <div id="logout-link"><a href="login-system/logout.php">Logga ut</a></div>
-        </ul>
 
         <div class="zoomViewport">
             <div class="zoomContainer">
@@ -106,6 +58,11 @@
                     <li>
                         <a href="#">Aktiv</a>
                         <ul id="activeToggle"></ul>
+                    </li>
+
+                    <li>
+                        <a href="#">Alarm</a>
+                        <ul id="alarmToggle"></ul>
                     </li>
 
                     <li>
@@ -160,6 +117,50 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a href="#">Visa Plan</a>
+                <ul>
+                    <div id="backgroundpicker">
+                        <select id="backgrounds">
+                            <option value="1">Entreplan</option>
+                            <option value="2">Förrådsbyggnad A</option>
+                            <option value="3">Förråd C</option>
+                        </select>
+                    </div>
+                </ul>
+            </li>
+
+            <div id="ladda-upp-plan-txt"><a href="upload_file.php">Ladda upp Plan</a></div>
+
+            <li>
+                <a href="#">Upladdade Plan</a>
+                <ul>
+                    <?php
+                        $images = glob("uploadedImages/*.*");
+
+                        // Echo ut namnen på de upladdade bilderna.
+                        foreach($images as $image) {
+
+                            echo basename($image) , "<br>";
+                        }
+
+                        // Echo ut de upladdade bilderna.
+                        $files = glob("uploadedImages/*.*");
+
+                        for ($i=0; $i<count($files); $i++) {
+
+                            $num = $files[$i];
+                            echo '<img src="'.$num.' "  id="allImages" " />'."<li><br/><br/></li>";
+                        }
+                    ?>
+                </ul>
+            </li>
+
+            <div><a href="javascript:window.print()">Printa Plan</a></div>
+
+            <div id="logout-link"><a href="login-system/logout.php">Logga ut</a></div>
+
         </ul>
     </body>
 </html>
