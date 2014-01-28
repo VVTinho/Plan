@@ -159,6 +159,8 @@
 
             <div><a href="javascript:window.print()">Printa Plan</a></div>
 
+            <li><a href="#" onclick="toggleRadius()">Visa Sensor radie</a></li>
+
             <div id="logout-link"><a href="login-system/logout.php">Logga ut</a></div>
 
         </ul>
