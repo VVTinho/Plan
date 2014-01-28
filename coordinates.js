@@ -482,6 +482,7 @@ function setupKinetic(index, theImage) {
                         kinGroups[index].add(circle);
                         kinGroups[index].add(circlered);
                     // jsonObjects[i].radie = true;
+                         break;
                     }
         //         // else {
 
@@ -495,7 +496,6 @@ function setupKinetic(index, theImage) {
         //         //     kinGroups[index].add(circlered);
         //         //     //jsonObjects[i].radie = false;
         //         // }
-        //         break;
             }
         }
     });
