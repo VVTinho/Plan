@@ -1,10 +1,12 @@
 body {
     margin: 0px;
-
-    /*background: url('plan1.jpg') no-repeat;*/
     height: 800px;
     width:100%;
     font-size: 12px;
+}
+
+.main_container {
+
 }
 
 #bilderna {
@@ -12,13 +14,9 @@ body {
     overflow: scroll;
 }
 
-canvas {
+canvas {}
 
-}
-
-#testar {
-
-}
+#testar {}
 
 #container {
     overflow: scroll;
@@ -115,7 +113,7 @@ canvas {
 /* Meny */
 
 #menu {
-    left: 72%;
+    left: 1050px;
     position: absolute;
     top: 1px;
 }
@@ -162,7 +160,7 @@ canvas {
 }
 
 #temperature {
-	font-size: 20px;
+	font-size: 22px;
 }
 
 #grader {
@@ -274,27 +272,18 @@ canvas {
     overflow: scroll !important;
 }
 
-.zoomViewport {
+.zoomViewport {}
 
-}
+.kineticjs-content {}
 
-.kineticjs-content {
-
-}
-
-#oks {
-
-}
+#oks {}
 
 /* Images */
 
-#newimages {
-
-}
+#newimages {}
 
 #allImages {
     height: auto;
     padding: 2px;
     width: 100%;
 }
-
