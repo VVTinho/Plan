@@ -159,14 +159,17 @@ function setupJsonImages(index) {
 
 function setupKinetic(index, theImage) {
 
+    console.log(theImage.width);
+    console.log(theImage.height);
+
     kinImages[index] = new Kinetic.Image({
 
         image: theImage,
         x: jsonObjectsLoaded[index].x,
         y: jsonObjectsLoaded[index].y,
         name: jsonObjectsLoaded[index].name,
-        width: 0,
-        height: 0
+        offsetX: 13,
+        offsetY: 13
     });
 
     kinGroups[index] = new Kinetic.Group({
@@ -181,10 +184,12 @@ function setupKinetic(index, theImage) {
         y: kinImages[index].getY(),
         width: kinImages[index].getWidth(),
         height: kinImages[index].getHeight(),
-        fontFamily: 'Calibri',
+        fontFamily: 'Helvetica',
         fontSize: 16,
         text: '',
-        fill: 'black'
+        fill: 'black',
+        offsetX: 13,
+        offsetY: 10
     });
 
     kinGroups[index].add(kinImages[index]);
@@ -235,8 +240,8 @@ function setupKinetic(index, theImage) {
                     showZoom();
 
                     sensorOFF();
-                }
-                else {
+                    }
+                    else {
 
                     $("#activeToggle").html('<li><a href="#" onclick="toggleActive(jsonObjects[i], true)">På</a></li>');
 
@@ -283,7 +288,7 @@ function setupKinetic(index, theImage) {
 
             x: kinImages[index].getX() - 50,
             y: kinImages[index].getY() + 60,
-            fontFamily: 'Calibri',
+            fontFamily: 'Helvetica',
             fontSize: 16,
             text: 'Sensorn är AV',
             fill: 'red'
@@ -327,7 +332,7 @@ function setupKinetic(index, theImage) {
 
             x: kinImages[index].getX() - 50,
             y: kinImages[index].getY() + 60,
-            fontFamily: 'Calibri',
+            fontFamily: 'Helvetica',
             fontSize: 16,
             text: 'Sensorn är PÅ',
             fill: 'green'
@@ -379,6 +384,17 @@ function setupKinetic(index, theImage) {
             opacity: 1,
             strokeWidth: 1
         });
+
+        var period = 2000;
+
+        var anim = new Kinetic.Animation(function(frame) {
+
+            var scale = Math.sin(frame.time * 2 * Math.PI / period) + 0.001;
+            // scale x and y
+            alarmcircle.scale({x:scale,y:scale});
+        }, layer);
+
+        anim.start();
 
         kinGroups[index].add(alarmcircle);
 
@@ -529,9 +545,8 @@ function finishStage() {
 
 function toggleRadius() {
 
-    console.log("toggle radius: " + radiusToggle);
-
     radiusToggle = !radiusToggle;
+
     if(radiusToggle == true) {
 
         for(i=0; i < kinGroups.length; i++) {
@@ -608,9 +623,6 @@ $(document).ready(function() {
             body.css('background-image', '');
         }
         else {
-
-            console.log("plan: " +plan);
-            //body.css('background-image', "url('plan" + plan + ".jpg')");
             body.attr("src", "plan" + plan +".jpg");
             loadPlanObjects(plan);
             // unloada previous bg-image (från minnet)...? drar resurer?     kinetics som drar resurser?
