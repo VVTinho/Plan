@@ -3,6 +3,8 @@
 <html>
     <head>
 		<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title>Plan | Örestad Linux</title>
 
         <link type="text/css" rel="stylesheet" href="styles.css" />
@@ -12,12 +14,11 @@
 		<script type="text/javascript" src="jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="coordinates.js"></script>
         <script src="jquery-ui.min.js"></script>
-        <script src="jquery.zoomooz.min.js"></script>
+        <!-- <script src="jquery.zoomooz.min.js"></script> -->
 
     </head>
 
     <body>
-
         <div class="zoomViewport">
             <div class="zoomContainer">
                 <img id="bilderna" src="plan1.jpg" />
@@ -76,20 +77,6 @@
                     </li>
                 </ul>
             </li>
-
-   <!--          <li>
-                <a href="#">Types</a>
-                </li>
-                <li>
-                    <ul>
-                        <li>
-                            <a href="#"><span id="currentType" title=""></span></a>
-                        </li>
-                        <li>
-                            <ul id="changeToTypes"></ul>
-                        </li>
-                    </ul>
-            </li> -->
 
             <hr>
 
