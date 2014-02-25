@@ -1,40 +1,26 @@
 body {
     margin: 0px;
-    height: 800px;
-    width:100%;
+    /* height: 800px; */
+   /* width:100%;*/
     font-size: 12px;
 }
 
-.main_container {
-
-}
+.main_container {}
 
 #bilderna {
     position: absolute;
-    overflow: scroll;
+    width: 70%;
 }
 
 canvas {}
 
 #testar {}
 
-#container {
-    overflow: scroll;
-}
+#container {}
 
 #target {
     bottom: 140px !important;
     left: 700px;
-}
-
-.maskin-values {
-    float: left;
-    padding: 10px;
-}
-
-.maskin-values-two {
-     margin-left: 10%;
-     padding: 10px;
 }
 
 .save-btn {
@@ -110,12 +96,36 @@ canvas {}
     padding: 40px;
 }
 
-/* Meny */
+/* MENY */
 
 #menu {
-    left: 1050px;
-    position: absolute;
-    top: 1px;
+    bottom: 400px;
+    left: 71%;
+    position: relative;
+}
+
+@media screen and (max-width: 700px) {
+    #menu {
+        bottom: 20px;
+        left: 0;
+        width: 71%;
+        position: relative;
+        font-size: 16px;
+    }
+}
+
+/*@media screen and (max-width: 600px) {
+    #menu {
+        bottom: 40px;
+        left: 0;
+        width: 71%;
+        position: relative;
+        font-size: 16px;
+    }
+}*/
+
+.ui-widget-content a {
+    color: #222222;
 }
 
 .ui-menu .ui-menu-divider {
@@ -129,6 +139,7 @@ canvas {}
 
 .ui-menu {
     width: 140px;
+    /*height: 385px;*/
 }
 
 .ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
@@ -146,10 +157,7 @@ canvas {}
 }
 
 #objektvalue {
-     	text-align: center;
-}
-
-#ui-id-5 {
+    text-align: center;
 }
 
 #ui-id-1 {
@@ -167,9 +175,6 @@ canvas {}
 	text-align: center;
 }
 
-#ui-id-12 {
-}
-
 #temperatur-btn {
     font-size: 10px;
 }
@@ -182,7 +187,7 @@ canvas {}
     font-family: helvetica !important;
 }
 
-/* Loginpage */
+/* LOGINPAGE */
 
 #head_title {
     font-size: 66px;
@@ -223,15 +228,7 @@ canvas {}
     margin-bottom: 20px;
 }
 
-/* Meny Two */
-
-#menutwo {
-    position: absolute;
-    width: 100px;
-    z-index: 1;
-}
-
-/* Zoom icons */
+/* ZOOM ICONS */
 
 .ui-icon-zoomin {
     float: left;
@@ -256,16 +253,16 @@ canvas {}
     position: relative;
 }
 
-/* Zoom */
+/* ZOOM */
 
 .zoomTarget {
     overflow: scroll !important;
 }
 
 .zoomContainer {
-    height: 1200px;
-    width: 1400px;
-    overflow: scroll !important;
+    /*height: 1200px;*/
+   /* width: 1400px;
+    overflow: scroll !important;*/
 }
 
 .noScroll {
@@ -274,11 +271,11 @@ canvas {}
 
 .zoomViewport {}
 
-.kineticjs-content {}
+.kineticjs-content { height: 400px !important; }
 
 #oks {}
 
-/* Images */
+/* IMAGES */
 
 #newimages {}
 
@@ -286,4 +283,24 @@ canvas {}
     height: auto;
     padding: 2px;
     width: 100%;
+}
+
+.menu_responsiv {}
+
+.menu {}
+
+#chan {}
+
+#loaded_images {}
+
+.supercontainer {
+
+}
+
+#parent {
+
+}
+
+.objt {
+
 }

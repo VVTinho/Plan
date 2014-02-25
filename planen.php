@@ -19,19 +19,23 @@
     </head>
 
     <body>
-        <div class="zoomViewport">
-            <div class="zoomContainer">
-                <img id="bilderna" src="plan1.jpg" />
+        <!-- <div class="zoomViewport">
+            <div class="zoomContainer"> -->
+                <img id="bilderna" src="plan1.jpg" /></img>
 
-                <div id="container" class="container"></div>
+                <div class="supercontainer">
+                    <div id="container" class="container"></div>
+                </div>
+
+                <!-- <div id="parent"></div> -->
 
                 <!--  class="zoomTarget" data-targetsize="1.2" -->
 
                 <!-- <a href="#" id="target">rum 1</a>
                 <div id="dialog"><img src="http://static.adzerk.net/Advertisers/d003fae081674b67aa74e6d19e289d40.png"/></div> -->
 
-            </div>
-        </div>
+         <!--    </div>
+        </div> -->
 
         <ul id="menu" class="menu" title="">
 
@@ -149,7 +153,7 @@
             <li><a href="#" onclick="toggleRadius()">Visa Sensor radie</a></li>
 
             <div id="logout-link"><a href="login-system/logout.php">Logga ut</a></div>
-
         </ul>
     </body>
 </html>
+
