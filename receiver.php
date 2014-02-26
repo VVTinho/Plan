@@ -11,5 +11,16 @@
 
     $jsondata = file_get_contents("php://input");
 
-     mysql_query("INSERT INTO receivedjson (data) VALUES ('".$jsondata."')") or die("Fel -".mysql_error());
+    mysql_query("INSERT INTO receivedjson (data) VALUES ('".$jsondata."')") or die("Fel -".mysql_error());
+
+    //$leavecomment =$_POST['textareacomment'];
+
+    // if (mysql_query("INSERT INTO `users` (`leavecomment`) VALUES ('".mysql_real_escape_string($leavecomment)."','".mysql_real_escape_string($email)."','".mysql_real_escape_string($phone)."')")) {
+
+    // echo 'Success!'
+    // } else {
+
+    //     echo mysql_error();
+    //     exit;
+    // }
 ?>

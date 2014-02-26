@@ -1,0 +1,7 @@
+[{"e3014":{"name":"e3014","interval":15,"x":0,"y":0,"plan":1,"added":"2013-06-26 19:40:27"}},{"e3026":{"name":"e3026","interval":15,"x":0,"y":0,"plan":1,"added":"2013-06-26 15:51:30"}},{"R2500":{"name":"R2500","interval":1,"x":0,"y":0,"plan":1,"added":"2013-11-28 14:03:20"}},{"R2502":{"name":"R2502","interval":1,"x":0,"y":0,"plan":1,"added":"2013-11-28 14:19:20"}}]
+
+
+Inloggningsuppgifter:
+
+
+{"UserID":9,"UserName":"ith","FirstName":"ITH","LastName":"Hantverkarna","Email":"drift@openlogger.se","EmailAlarm":true,"Phone":"08 410 555 00","MobilePhone":"","Admin":false,"LastLogon":"20140226125645000","Block":false,"rights":[{"name":"system","label":"Systemadministratör","current":true},{"name":"alarm","label":"Larmadministratör","current":true},{"name":"object","label":"Objektsadministratör","current":true},{"name":"user","label":"Användaradministratör","current":true}],"SMSNumber":666,"UseMobileNumber":false,"SMSAlarm":true,"error":"","AlarmGroup":[{"AGID":"1","UserID":"9","Name":"System","ToTime":"20130708131458","checked":false},{"AGID":"2","UserID":"9","Name":"Alla objekt","ToTime":"20300101000000","checked":true},{"AGID":"3","UserID":"9","Name":"ID kommunikation","ToTime":"20130610152143","checked":false},{"AGID":"4","UserID":null,"Name":"Örestad Linux","ToTime":null,"checked":false},{"AGID":"5","UserID":"9","Name":"Openlogger","ToTime":"20130708090634","checked":false}]}

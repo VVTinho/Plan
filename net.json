@@ -1,11 +1,11 @@
 {
   "c3000": {"x": 675, "y": 269, "plan":1, "name":"c3000", "img":"sensor3.png", "added":"datetime", "type":"c", "interval":"0", "comment":"enmassatext", "active":true, "value":"4c", "radie":false, "alarm":false},
-  "r3002": {"x": 223, "y": 355, "plan":1, "name":"r3002", "img":"sensor2.png", "added":"datetime", "type":"r", "interval":"6", "comment":"enmassatext", "active":true, "value":"-4c", "radie":false, "alarm":true},
+  "r3002": {"x": 223, "y": 355, "plan":1, "name":"r3002", "img":"sensor2.png", "added":"datetime", "type":"r", "interval":"6", "comment":"enmassatext", "active":true, "value":"-4c", "radie":true, "alarm":true},
   "r3003": {"x": 300, "y": 100, "plan":1, "name":"r3003", "img":"sensor1.png", "added":"datetime", "type":"e", "interval":"3", "comment":"enmassatext", "active":false, "value":"15c", "radie":false, "alarm":false},
 	"c3004": {"x": 675, "y": 269, "plan":2, "name":"c3004", "img":"router1.png", "added":"datetime", "type":"c", "interval":"0", "comment":"enmassatext", "active":true, "value":"4c", "radie":false, "alarm":false},
-  "r3005": {"x": 223, "y": 355, "plan":2, "name":"r3005", "img":"router2.png", "added":"datetime", "type":"r", "interval":"6", "comment":"enmassatext", "active":true, "value":"-4c", "radie":false, "alarm":false},
-  "r3006": {"x": 300, "y": 100, "plan":2, "name":"r3006", "img":"router3.png", "added":"datetime", "type":"e", "interval":"3", "comment":"enmassatext", "active":false, "value":"15c", "radie":false, "alarm":false},
+  "r3005": {"x": 223, "y": 355, "plan":2, "name":"r3005", "img":"router2.png", "added":"datetime", "type":"r", "interval":"6", "comment":"enmassatext", "active":true, "value":"-4c", "radie":true, "alarm":false},
+  "r3006": {"x": 300, "y": 100, "plan":2, "name":"r3006", "img":"router3.png", "added":"datetime", "type":"e", "interval":"3", "comment":"enmassatext", "active":false, "value":"15c", "radie":false, "alarm":true},
 	"c3007": {"x": 675, "y": 269, "plan":3, "name":"c3007", "img":"router4.png", "added":"datetime", "type":"c", "interval":"0", "comment":"enmassatext", "active":true, "value":"4c", "radie":false, "alarm":false},
   "r3008": {"x": 223, "y": 355, "plan":3, "name":"r3008", "img":"router5.png", "added":"datetime", "type":"r", "interval":"6", "comment":"enmassatext", "active":true, "value":"-4c", "radie":false, "alarm":false},
-  "r3009": {"x": 300, "y": 100, "plan":3, "name":"r3009", "img":"router6.png", "added":"datetime", "type":"e", "interval":"3", "comment":"enmassatext", "active":false, "value":"15c", "radie":false, "alarm":false}
+  "r3009": {"x": 300, "y": 100, "plan":3, "name":"r3009", "img":"router6.png", "added":"datetime", "type":"e", "interval":"3", "comment":"enmassatext", "active":false, "value":"15c", "radie":true, "alarm":true}
 }

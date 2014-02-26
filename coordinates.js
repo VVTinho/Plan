@@ -162,12 +162,26 @@ function changeInterval(interval) {
 
 function populateNames() {
 
-    for(i = 0; i < jsonObjects.length; i++) {
+    var color = "green";
+    var alarms = "AV";
 
-        if(availableNames.indexOf(jsonObjects[i].name) < 0) {
+    for (i = 0; i < jsonObjects.length; i++) {
+
+        if (jsonObjects[i].alarm == true) {
+
+            color = "red";
+            alarms = "PÅ";
+        }
+        else {
+
+            color = "green";
+            alarms = "AV";
+        }
+        if (availableNames.indexOf(jsonObjects[i].name) < 0) {
 
             availableNames.push(jsonObjects[i].name);
-            $("#chan").append('<li><a href="#">' + jsonObjects[i].name + '</a></li>');
+
+            $("#chan").append('<li><a style="color:' + color + ';" href="#">' + jsonObjects[i].name + '&nbsp; Plan:' + jsonObjects[i].plan + '&nbsp; &nbsp;' +  alarms + '</a></li>');
         }
     }
 }
@@ -202,33 +216,34 @@ function createStage() {
     });
     setupJsonImages(-1);
 
-    // responsiveStage();
+    responsiveStage();
 }
 
-// function responsiveStage() {
-//     var initialScale = stage.scale(); //returns {x: 1, y: 1}
-//     var initialWidth = $("#container").innerWidth(); // initial width
-//     var initialHeight = $("#container").innerHeight(); // initial height
+function responsiveStage() {
 
-//     window.onresize = function(event) { // listen for change
-//         var width = $("#container").innerWidth(); // new width of page
-//         var height = $("#container").innerHeight(); // new height of page
+    var initialScale = stage.scale(); //returns {x: 1, y: 1}
+    var initialWidth = $("#container").innerWidth(); // initial width
+    var initialHeight = $("#container").innerHeight(); // initial height
 
-//         console.log(width);
-//         console.log(height);
+    window.onresize = function(event) { // listen for change
+        var width = $("#container").innerWidth(); // new width of page
+        var height = $("#container").innerHeight(); // new height of page
 
-//         var xScale =  (width  / initialWidth) * initialScale.x;  // percent change in width (Ex: 1000 - 400/1000 means the page scaled down 60%, you should play with this to get wanted results)
-//         var yScale = (height / initialHeight) * initialScale.y;
-//         var newScale = {x: xScale, y: yScale};
+        console.log(width);
+        console.log(height);
 
-//         console.log(newScale);
+        var xScale =  (width  / initialWidth) * initialScale.x;  // percent change in width (Ex: 1000 - 400/1000 means the page scaled down 60%, you should play with this to get wanted results)
+        var yScale = (height / initialHeight) * initialScale.y;
+        var newScale = {x: xScale, y: yScale};
 
-//         stage.setAttr('width', width);
-//         stage.setAttr('height', height);
-//         stage.setAttr('scale', newScale );
-//         stage.draw();
-//     }
-// }
+        console.log(newScale);
+
+        stage.setAttr('width', width);
+        stage.setAttr('height', height);
+        stage.setAttr('scale', newScale );
+        stage.draw();
+    }
+}
 
 function setupJsonImages(index) {
 
@@ -312,6 +327,7 @@ function setupKinetic(index, theImage) {
                 var hamtaNamn = kinGroups[index].getName();
                 $( "#objektnamn" ).html(hamtaNamn);
                 $( "#flyttaobjektnamn" ).html(hamtaNamn);
+                $( "#objektnamnkommentar" ).html(hamtaNamn);
 
                 $( "#currenttype" ).html("Aktuell Typ: " + jsonObjects[i].type);
 
@@ -331,6 +347,14 @@ function setupKinetic(index, theImage) {
                     alarmON();
                 }
                 //break;
+                if(jsonObjects[i].radie == true) {
+
+                    $("#radieToggle").html('<li><a href="#" onclick="toggleRadie(jsonObjects[i], false)">Av</a></li>');
+                }
+                else {
+
+                    $("#radieToggle").html('<li><a href="#" onclick="toggleRadie(jsonObjects[i], true)">På</a></li>');
+                }
 
                 if(jsonObjects[i].active == true) {
 
@@ -478,15 +502,6 @@ function setupKinetic(index, theImage) {
             strokeWidth: 1
         });
 
-        // var period = 2000;
-
-        // var anim = new Kinetic.Animation(function(frame) {
-        //     var scale = Math.sin(frame.time * 2 * Math.PI / period) + 0.001;
-        //     alarmcircle.scale({x:scale,y:scale});
-        // }, layer);
-
-        // anim.start();
-
         var period = 2000;
 
         anim = new Kinetic.Animation(function(frame) {
@@ -497,28 +512,11 @@ function setupKinetic(index, theImage) {
 
         anim.start();
 
-        // var period = 2000;
-        // var anim = new Kinetic.Animation({
-
-        //     func: function(frame) {
-        //         if (frame.time >= period ) {
-
-        //             anim.stop() ;
-        //         } else {
-        //             var scale = Math.sin(frame.time * 2 * Math.PI / period) + 0.001;
-        //             alarmcircle.scale({x:scale,y:scale});
-        //         }
-        //     },
-        //     node: layer
-        // });
-
         // anim.start();
 
         kinGroups[index].add(alarmcircle);
 
         // layer.draw();
-
-        //alarmcircleon.remove();
     }
 
     function alarmON() {
@@ -539,8 +537,6 @@ function setupKinetic(index, theImage) {
         kinGroups[index].add(alarmcircleon);
 
         layer.draw();
-
-        //anim.stop();
     }
 
     showAlarm();
@@ -566,79 +562,6 @@ function setupKinetic(index, theImage) {
             }
         }
     }
-
-    // var angularSpeed = 360 / 4;
-
-    // var anim = new Kinetic.Animation(function(frame) {
-
-    //     var angleDiff = frame.timeDiff * angularSpeed / 1000;
-    //     circle.rotate(angleDiff);
-    // }, layer);
-
-    // anim.start();
-
-    // settings = {
-
-    //     // zoomed size relative to the container element
-    //     // 0.0-1.0
-    //     targetsize: 1.4,
-
-    //     // scale content to screen based on their size
-    //     // "width"|"height"|"both"
-    //     scalemode: "both",
-
-    //     // animation duration
-    //     duration: 450,
-
-    //     // easing of animation, similar to css transition params
-    //     // "linear"|"ease"|"ease-in"|"ease-out"|"ease-in-out"|[p1,p2,p3,p4]
-    //     // [p1,p2,p3,p4] refer to cubic-bezier curve params
-    //     easing: "ease",
-
-    //     // use browser native animation in webkit, provides faster and nicer
-    //     // animations but on some older machines, the content that is zoomed
-    //     // may show up as pixelated.
-    //     nativeanimation: true,
-
-    //     // root element to zoom relative to
-    //     // (this element needs to be positioned)
-    //     root: $("document.body"),
-
-    //     // show debug points in element corners. helps
-    //     // at debugging when zoomooz positioning fails
-    //     debug: false,
-
-    //     // this function is called with the element that is zoomed to in this
-    //     // when animation ends
-    //     animationendcallback: null,
-
-    //     // this specifies, that clicking an element that is zoomed to zooms
-    //     // back out
-    //     closeclick: true,
-
-    //     // don't reset scroll before zooming. less jaggy zoom starts and ends on
-    //     // mobile browsers, but causes issues when zooming to elements when scrolled
-    //     // to a specific distance in document, typically around 2000px on webkit.
-    //     preservescroll: false
-    // }
-
-    // // settings can be set for both the zoomTo and zoomTarget calls:
-    // $("#container").zoomTarget(settings);
-
-    $("button").click(function(planId) {
-
-        for(i=0; i<jsonObjects.length; i++) {
-
-            if(kinGroups[index].getName() == jsonObjects[i].name) {
-
-                // if(jsonObjects[i].plan == planId) {
-
-                    $( "#statuslarm" ).html("Aktuella larm:");
-
-                // }
-            }
-        }
-    });
 
     kinGroups[index].on('dragend',function() {
 
@@ -667,11 +590,6 @@ function finishStage() {
     stage.add(layer);
     stage.draw();
 
-    // stage.on('mouseout', function() {
-
-    //     writeMessage('Mouseout triangle');
-    // });
-
     var text = new Kinetic.Text({
 
         x: 10,
@@ -698,6 +616,16 @@ function finishStage() {
         console.log(mousePos);
     });
 }
+
+// Spara kommentarer till databasen
+$("#sub").click(function() {
+
+    $.post($("#commentsensor").attr("action"), $("#commentsensor:input").serializeArray(), function(info){$("#result").html(info);});
+});
+
+$("#commentsensor").submit(function() {
+    return false;
+});
 
 function toggleRadius() {
 
@@ -736,6 +664,20 @@ function toggleActive(clickedObject, active) {
     }
 }
 
+function toggleRadie(clickedObjectradie, radie) {
+
+    clickedObjectradie.radie = radie;
+
+    if(clickedObjectradie.radie == true) {
+
+        $("#radieToggle").html('<li><a href="#" onclick="toggleRadie(clickedObjectradie, false)">Av</a></li>');
+    }
+    else {
+
+        $("#radieToggle").html('<li><a href="#" onclick="toggleRadie(clickedObjectradie, true)">På</a></li>');
+    }
+}
+
 function toggleAlarm(clickedObjectalarm, alarm) {
 
     clickedObjectalarm.alarm = alarm;
@@ -758,7 +700,6 @@ $(document).ready(function() {
     $('#backgrounds').bind('change', function(event) {
 
         // vid plan byte gör nedan:
-        // ta bort radie-cirklar
         // sätt jsonobjects från förra plan till radie=false
 
         var plan = $(this).val();
